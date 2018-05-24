@@ -22,6 +22,10 @@ make_dist() {
     cp -t dist "$_out_dir/rg.1" "$_out_dir/rg.bash"
     cp -t dist target/release/rg
     cp install.mk dist/Makefile
+    for p in *.patch
+    do
+        patch --quiet -p1 < $p || exit
+    done
 }
 
 host() {

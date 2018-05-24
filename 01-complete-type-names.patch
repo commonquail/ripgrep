@@ -1,0 +1,16 @@
+--- a/dist/rg.bash	2020-04-10 21:41:00.338897684 +0200
++++ b/dist/rg.bash	2020-04-10 21:37:35.865413502 +0200
+@@ -176,11 +176,11 @@
+                     return 0
+                     ;;
+                 --type)
+-                    COMPREPLY=($(compgen -f "${cur}"))
++                    COMPREPLY=($(compgen -W "$(rg --type-list | cut -d: -f1)" -- "${cur}"))
+                     return 0
+                     ;;
+                     -t)
+-                    COMPREPLY=($(compgen -f "${cur}"))
++                    COMPREPLY=($(compgen -W "$(rg --type-list | cut -d: -f1)" -- "${cur}"))
+                     return 0
+                     ;;
+                --type-add)

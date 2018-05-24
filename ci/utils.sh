@@ -16,6 +16,14 @@ cargo_out_dir() {
       | xargs dirname
 }
 
+make_dist() {
+    local _out_dir="$(cargo_out_dir target/)"
+    mkdir -p dist
+    cp -t dist "$_out_dir/rg.1" "$_out_dir/rg.bash"
+    cp -t dist target/release/rg
+    cp install.mk dist/Makefile
+}
+
 host() {
     case "$TRAVIS_OS_NAME" in
         linux)

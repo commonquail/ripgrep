@@ -70,7 +70,8 @@ pub use walk::{
     WalkParallel, WalkState,
 };
 
-mod default_types;
+/// Public module requires docs.
+pub mod default_types;
 mod dir;
 pub mod gitignore;
 pub mod overrides;

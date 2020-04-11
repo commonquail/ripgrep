@@ -12,6 +12,8 @@
 use clap::{self, crate_authors, crate_version, App, AppSettings};
 use lazy_static::lazy_static;
 
+use ignore::default_types::DEFAULT_TYPES;
+
 const ABOUT: &str = "
 ripgrep (rg) recursively searches your current directory for a regex pattern.
 By default, ripgrep will respect your .gitignore and automatically skip hidden
@@ -2860,10 +2862,14 @@ file types). The end result is that '--type all' causes ripgrep to search in
 definitions.
 "
     );
+    let mut recognized_types: Vec<&str> =
+        DEFAULT_TYPES.iter().map(|&(name, _)| name).collect();
+    recognized_types.push(&"all");
     let arg = RGArg::flag("type", "TYPE")
         .short("t")
         .help(SHORT)
         .long_help(LONG)
+        .possible_values(&recognized_types)
         .multiple();
     args.push(arg);
 }

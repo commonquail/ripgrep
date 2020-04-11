@@ -66,6 +66,7 @@ version = "0.3.0"
 
 [build-dependencies]
 lazy_static = "1.1.0"
+ignore = { version = "0.4.12", path = "crates/ignore" }
 
 [build-dependencies.clap]
 version = "2.33.0"
